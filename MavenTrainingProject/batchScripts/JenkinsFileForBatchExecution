@@ -1,0 +1,17 @@
+node {  
+
+    stage 'Init'
+
+    bat '''
+
+        call MavenTrainingProject stop
+
+        EXIT /B 0
+
+    '''
+
+    stage 'Deploy'
+
+    bat '''Nothing to Deploy'''
+
+}
