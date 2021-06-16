@@ -4,7 +4,7 @@ node {
 
     bat '''
 
-        call MavenTrainingProject stop
+        call MavenTrainingProject/batchScripts/myBatchFile.bat stop
 
         EXIT /B 0
 
