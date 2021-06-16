@@ -1,7 +1,7 @@
 node {  
 
     stage 'Init'
-	echo bash(script: 'env|sort', returnStdout: true)
+	bat 'set'
     bat '''
 
 		
