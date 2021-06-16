@@ -7,7 +7,7 @@ node {
 		bat 'set'
 	    bat '''
 			echo %workspace%
-			cmd.exe /c %workspace%/batchScripts/myBatchFile.bat
+			cmd.exe /c %workspace%/MavenTrainingProject/batchScripts/myBatchFile.bat
 	        EXIT /B 0
 	    '''
 	    
