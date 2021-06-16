@@ -10,7 +10,7 @@ pipeline {
    
     triggers { 
     	 //Trigger
-    	cron('*/5 * * * *') }
+    	cron('*/5 * * * *') 
     
 	    //Polling
 	    pollSCM('*/1 * * * *') 
