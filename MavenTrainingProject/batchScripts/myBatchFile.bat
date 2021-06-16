@@ -1,3 +1,4 @@
+@echo off
 echo "Testing IP configuration...."
 ipconfig /all
 

@@ -1,19 +1,15 @@
 node {  
 
-    stage 'Init'
-	bat 'set'
-    bat '''
-
-		
-		echo %workspace%
-        call %workspace%/batchScripts/myBatchFile.bat
-
-        EXIT /B 0
-
-    '''
-
-    stage 'Deploy'
-
-    bat '''Nothing to Deploy'''
+    stage 'Init' {
+		bat 'set'
+	    bat '''
+			echo %workspace%
+			cmd.exe /c %workspace%/batchScripts/myBatchFile.bat
+	        EXIT /B 0
+	    '''
+	    }
+    stage 'Deploy' {
+   		 bat '''Nothing to Deploy'''
+   		 }
 
 }
