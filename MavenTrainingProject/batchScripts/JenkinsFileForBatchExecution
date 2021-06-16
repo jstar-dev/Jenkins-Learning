@@ -1,5 +1,8 @@
 node {  
 
+	stage 'Checkout'
+	    git credentialsId: 'github-credentials',
+	        url: 'https://github.com/sthamim/MavenTrainingProject.git'
     stage 'Init' 
 		bat 'set'
 	    bat '''
