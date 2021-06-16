@@ -12,7 +12,7 @@ node {
 	    '''
 	    
     stage 'Deploy' 
-   		 bat '''Nothing to Deploy...'''
+   		 bat '''echo Nothing to Deploy...'''
    		 
 
 }
