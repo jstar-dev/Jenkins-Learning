@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+       
+        maven 'Default'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                
+                git credentialsId: 'github-credentials',
+                    url: 'https://github.com/sthamim/MavenTrainingProject.git'
+
+                // Run Maven on a Unix agent.
+                // sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+                // To run Maven on a Windows agent, use
+                 bat "mvn -Dmaven.test.failure.ignore=true clean install -f MavenTrainingProject/pom.xml"
+                 bat "exit 1"
+            }
+
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                    // junit '**MavenTrainingProject/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'MavenTrainingProject/target/*.jar'
+                }
+                failure {
+                    mail bcc: '', body: "Build url : ${env.BUILD_URL}", cc: '', from: '', replyTo: '', subject: 'Build failure', to: 'sheik.thamim.ansari@gmail.com'
+                }
+            }
+        }
+    }
+}
