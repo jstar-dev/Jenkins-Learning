@@ -1,3 +1,3 @@
-def checkOutFrom(repo,credentialsId) {
+def call(repo,credentialsId) {
   git changelog: false, credentialsId: $credentialsId, poll: false, url: $repo
 }
