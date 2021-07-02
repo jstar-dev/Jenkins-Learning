@@ -1,0 +1,11 @@
+node {
+    deleteDir()
+    stage("upload") {
+        def inputFile = input message: 'Upload file', parameters: [file(name: 'fileParam')]
+        new hudson.FilePath(new File("$workspace/fileParam")).copyFrom(inputFile)
+        inputFile.delete()
+    }
+    stage("checkout") {
+        echo fileExists('data.zip').toString()
+    }
+}
