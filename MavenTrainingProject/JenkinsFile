@@ -4,23 +4,23 @@ pipeline {
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
        
-        maven 'Default'
+        maven 'Default-Maven'
     }
-
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
                 // Get some code from a GitHub repository
                 
-                git credentialsId: 'github-credentials',
-                    url: 'https://github.com/sthamim/MavenTrainingProject.git'
-
-                // Run Maven on a Unix agent.
-                // sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                // To run Maven on a Windows agent, use
-                 bat "mvn -Dmaven.test.failure.ignore=true clean install -f MavenTrainingProject/pom.xml"
+                git changelog: false, credentialsId: 'github-credentials', poll: false, url: 'https://github.com/sthamim/MavenTrainingProject.git'        
             }
+		}
+		stage('Build') {
+			steps {
+			   
+				 bat "mvn -Dmaven.test.failure.ignore=true clean install -f MavenTrainingProject/pom.xml"
+			}
+		}
+	}
 
             post {
                 // If Maven was able to run the tests, even if some of the test
@@ -31,5 +31,7 @@ pipeline {
                 }
             }
         }
-    }
-}
+    
+
+
+
