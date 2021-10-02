@@ -4,8 +4,15 @@ pipeline {
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
        
-        maven 'Default'
+        maven 'Default-Maven'
     }
+    
+    parameters {
+        booleanParam(name: 'EnableBuild', description: 'Enable build', defaultValue: 'true')
+    }
+
+
+
 
     stages {
         stage('Build') {
@@ -34,7 +41,7 @@ pipeline {
         }
         stage('Conditional Stage') {
             when {
-               
+                
                 expression { params.EnableBuild == true }
             }
             steps {
