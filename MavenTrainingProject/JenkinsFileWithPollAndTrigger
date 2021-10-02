@@ -4,13 +4,13 @@ pipeline {
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
        
-        maven 'Default'
+        maven 'Default-Maven'
     }
     
    
     triggers { 
     	 //Trigger
-    	cron('*/5 * * * *') 
+    	cron('*/1 * * * *') 
     
 	    //Polling
 	    pollSCM('*/1 * * * *') 
