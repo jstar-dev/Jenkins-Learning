@@ -14,6 +14,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  repository_dispatch:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:    
@@ -43,3 +44,8 @@ jobs:
 #       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
 #       env:
 #         GITHUB_TOKEN: ${{ github.token }}
+
+    - name: Repository Dispatch Triggered
+      if: github.event.action == 'event-demo'
+      run: |
+          echo "Workflow triggered successfully by repository dispatch action!"
